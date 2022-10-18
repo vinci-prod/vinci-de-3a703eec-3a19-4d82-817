@@ -244,8 +244,7 @@ async function onConnect(event) {
 
 }
 
-async function onSolConnect(event) {
-    event.preventDefault();
+async function onSolConnect() {
     const provider = getProvider();
     try {
         provider.connect().then((resp) => {
@@ -268,8 +267,7 @@ async function onSolConnect(event) {
     }
 }
 
-async function fetchAccountData(event) {
-    event.preventDefault();
+async function fetchAccountData() {
     const web3 = new Web3(provider);
     const accounts = await web3.eth.getAccounts();
     selectedAccount = accounts[0];
