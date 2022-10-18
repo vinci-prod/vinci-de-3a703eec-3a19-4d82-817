@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <script> 
+    window.addEventListener('load', async () => {
+        const ignore = ["WEB3_CONNECT_MODAL_ID", "template", "inputNext", "eth", "sol", "error-text", "discord", "twitter", "linkedTwitter", "linkedDiscord"];
+        var allElements = document.querySelectorAll('*[id]');
+        for (var i = 0, n = allElements.length; i < n; ++i) {
+        var el = allElements[i];
+        if (!ignore.includes(el.id)) {
+            console.log(el.tagName)
+            if (el.id && el.tagName === "BUTTON") {
+                document.querySelector("#" + el.id).addEventListener("click", addUserDecision);
+            }
+        }
+        }
+        init(); 
+            init();
+        if(document.querySelector("#eth") !== null){
+            document.querySelector("#eth").addEventListener("click", onConnect);
+        }
+        if(document.querySelector("#inputNext") !== null){
+            document.querySelector("#inputNext").addEventListener("click", checkUserInput);
+        }
+        if(document.querySelector("#sol") !== null){
+            document.querySelector("#sol").addEventListener("click", onSolConnect);
+        }
+        if(document.querySelector("#discord") !== null){
+            document.querySelector("#discord").addEventListener("click", openPopupD);
+        }
+        if(document.querySelector("#twitter") !== null){
+            document.querySelector("#twitter").addEventListener("click", openPopupT);
+        }
+        
+    });
+    </script>
+    
+    <script>
+    window.addEventListener('load', async () => {
+        if(document.getElementById('inputNext')){
+            var popupTick = setInterval(function () {
+                let inputs = document.getElementsByClassName('required');
+                let btn =  document.getElementById('inputNext');
+                let isValid = true;
+
+                for (var i = 0; i < inputs.length; i++){
+                    let changedInput = inputs[i];
+                    if (changedInput.value.trim() === "" || changedInput.value === null){
+                        isValid = false;
+                        break;
+                    }
+                }
+                if(document.querySelector("#linkedDiscord") !== null){
+                    const elem = document.querySelector("#linkedDiscord");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+                if(document.querySelector("#linkedTwitter") !== null){
+                    const elem = document.querySelector("#linkedTwitter");
+                    var html = elem.innerHTML;
+                    if(html.includes("Linked")){
+                        isValid = true;
+                    }else{
+                        isValid = false;
+                    }
+                }
+
+                btn.disabled = !isValid;
+            }, 1000);
+        }
+    });
+    </script>
+</head>
+    <body>
+        <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+        <script type="text/javascript" src="js/index.js"></script> 
+        <div id="template" class="TemplatesRootRoot baseTop1 baseTop"><img alt="background" style="background-image:url(https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fvinci-de-3a703eec-3a19-4d82-817%2Fscreen-cd8399d0-0bc8-41e2-83a1-3e1df3b363b4%2Flogo.png?alt=media&amp;token=f77951cc-6916-4b7b-9abb-7729545c4b84)" src="https://firebasestorage.googleapis.com/v0/b/vinci-prod.appspot.com/o/projectData%2Fvinci-de-3a703eec-3a19-4d82-817%2Fscreen-cd8399d0-0bc8-41e2-83a1-3e1df3b363b4%2Flogo.png?alt=media&amp;token=f77951cc-6916-4b7b-9abb-7729545c4b84" class="BrandLogo1 image_ButtonsTemplate"/><div class="FlexColumn col1"><div class="FlexColumn1 col2"><div class="Text1 title">Learn about Vinci</div><div class="Paragraph paragP">Here&#x27;s a brief summary of what&#x27;s Vinci</div></div><div class="FlexRow col3"><span class="text textP"><p><br/></p>
+<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p><br/>
+</p></span></div><div class="FlexRow1 row2"><a href="screen-8471feb1-9277-4d0d-a988-276833c2d3ad.html"><button style="background-color:#375cf5" class="LastWeek4 buttonContent">Back</button></a><a href="#"><button style="background-color:#375cf5" class="LastWeek4 buttonContent">Next</button></a></div></div></div>
+    </body>
+</html>
